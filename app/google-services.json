@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "891131253276",
+    "project_id": "login-signup-frd-69444",
+    "storage_bucket": "login-signup-frd-69444.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:891131253276:android:32ac9f68a30e07996ec5d9",
+        "android_client_info": {
+          "package_name": "com.ganeshi.loginsignupfrd"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBY9i1AGYMwFAPaLLhCtMU0CAsrJEfiWAk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
