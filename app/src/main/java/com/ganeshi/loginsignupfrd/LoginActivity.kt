@@ -31,7 +31,7 @@ class LoginActivity : AppCompatActivity() {
             val loginUserName = binding.loginUsername.text.toString()
             val loginPassword = binding.loginpassword.text.toString()
 
-            if (loginUserName.isNotEmpty() && loginPassword.isNotEmpty()){
+            if (loginUserName.isNotEmpty() && loginPassword.isNotEmpty()) {
                 loginUser(loginUserName , loginPassword)
             }else{
                 Toast.makeText(this@LoginActivity , "All fields are required" , Toast.LENGTH_LONG).show()
@@ -57,7 +57,12 @@ class LoginActivity : AppCompatActivity() {
                                     "Login Successful",
                                     Toast.LENGTH_SHORT
                                 ).show()
-                                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+
+
+                                var intent = Intent(this@LoginActivity, MainActivity::class.java)
+                                intent.putExtra("username" , userData )
+                              //  intent.putExtra("password" , userData.password)
+                                startActivity(intent)
                                 finish()
                                 return
                             }

@@ -1,7 +1,6 @@
 package com.ganeshi.loginsignupfrd
 
 import android.content.Intent
-import android.os.Binder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -32,12 +31,19 @@ class SignupActivity : AppCompatActivity() {
 
 
 
+
+
+
         binding.signupButton.setOnClickListener {
+            //signupUser()
+
+
             val signupUserName = binding.signupUserName.text.toString()
             val signupPassword = binding.signupPassword.text.toString()
 
-            if (signupUserName.isNotEmpty()  && signupPassword.isNotEmpty()){
-                signupUser(signupUserName , signupPassword)
+
+            if (signupUserName.isNotEmpty()  && signupPassword.isNotEmpty()) {
+                signupUser(signupUserName , signupPassword )
             }else{
                 Toast.makeText(this@SignupActivity , "All fields are mandatory", Toast.LENGTH_SHORT).show()
             }
@@ -52,14 +58,29 @@ class SignupActivity : AppCompatActivity() {
 
 
     private  fun signupUser(username:String, password:String){
+        val number = 9876577
+        val address = "Dehradun Uttarakhand"
+        val isAdmin = false
+
         databaseReference.orderByChild("username").equalTo(username).addListenerForSingleValueEvent(object :ValueEventListener{
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (!dataSnapshot.exists()){
                     val id = databaseReference.push().key
-                    val userData = UserData(id, username, password)
+                    val userData = UserData(
+                        id = id,
+                        username = username,
+                        password = password ,
+                        number = number,
+                        address = address,
+                        isAdmin = isAdmin
+                        )
                     databaseReference.child(id!!).setValue(userData)
+
+
+
                     Toast.makeText(this@SignupActivity, "Signup Successful", Toast.LENGTH_SHORT)
                     startActivity(Intent(this@SignupActivity, LoginActivity::class.java))
+
                     finish()
                 }else{
                     Toast.makeText(this@SignupActivity, "User already exists" , Toast.LENGTH_SHORT).show()
@@ -71,4 +92,6 @@ class SignupActivity : AppCompatActivity() {
             }
         })
     }
+
+
 }
