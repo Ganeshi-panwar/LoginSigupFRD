@@ -59,8 +59,8 @@ class SignupActivity : AppCompatActivity() {
 
     private  fun signupUser(username:String, password:String){
         val number = 9876577
-        val address = "Dehradun Uttarakhand"
-        val isAdmin = false
+        val address = "Dehradun uk"
+        val isAdmin = true
 
         databaseReference.orderByChild("username").equalTo(username).addListenerForSingleValueEvent(object :ValueEventListener{
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -75,12 +75,8 @@ class SignupActivity : AppCompatActivity() {
                         isAdmin = isAdmin
                         )
                     databaseReference.child(id!!).setValue(userData)
-
-
-
                     Toast.makeText(this@SignupActivity, "Signup Successful", Toast.LENGTH_SHORT)
                     startActivity(Intent(this@SignupActivity, LoginActivity::class.java))
-
                     finish()
                 }else{
                     Toast.makeText(this@SignupActivity, "User already exists" , Toast.LENGTH_SHORT).show()
